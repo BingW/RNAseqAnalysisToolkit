@@ -61,5 +61,4 @@ for i,alnmt in enumerate(sam_file):
         percent += 0.05
 
 for name in sorted(counts.keys()):
-    pass
-    #print name,counts[name]
+    print name,counts[name]
