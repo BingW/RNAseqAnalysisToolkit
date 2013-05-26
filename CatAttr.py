@@ -22,11 +22,19 @@ def usage():
     sys.stderr.write(help_info)
 
 def check_argv():
+    try:
+        assert len(sys.argv) > 1
+    except:
+        sys.stderr.write("\nERROR: no input file\n")
+        usage()
+        sys.exit()
+
     for file_name in sys.argv[1:]:
         try:
             open(file_name).close()
         except:
-            sys.stderr.write("\ncannot open %s"%file_name)
+            sys.stderr.write("\nERROR: cannot open %s"%file_name)
+            usage()
             sys.exit()
 
 def main():
