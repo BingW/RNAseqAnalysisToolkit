@@ -7,7 +7,7 @@ name to scer homo gene, the scer function comes from SGD's scer feature file.
 
 Usage:
 
-./Map2ScerStuff -in map_file > out_file
+./Map2ScerStuff map_file > out_file
 
 mapfile should looks like:
 
@@ -26,8 +26,7 @@ def usage():
 
 def arg_verify():
     try:
-        assert "-in" in sys.argv
-        open(sys.argv[sys.argv.index("-in")+1]).close()
+        open(sys.argv[1]).close()
     except:
         sys.stderr.write("\nERROR: no input file\n")
         usage()
@@ -35,7 +34,7 @@ def arg_verify():
 
 def main():
     arg_verify()
-    map_file = sys.argv[sys.argv.index("-in")+1]
+    map_file = sys.argv[1]
     sp_name2scer_name = {}
     handle = open(map_file)
     handle.readline()
