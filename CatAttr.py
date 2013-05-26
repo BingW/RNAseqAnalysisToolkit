@@ -15,10 +15,10 @@ Usage:
 
 #the very first row will be supposed as attribute's name, passed by readline()
 
-./CatAttr.py a_dict b_dict -main c_dict > out_dict
+./CatAttr.py a_dict b_dict --main c_dict > out_dict
 
 #take c_dict's members as main member all member not in main will be discarded
-#only one -main dict
+#only one --main dict
 '''
 
 '''
@@ -26,7 +26,7 @@ version 0.01
 basic function cat n dicts together
 
 version 0.02
-add -main flag which only use main members and discard all other member which 
+add --main flag which only use main members and discard all other member which 
 not in main dicts
 '''
 
@@ -38,7 +38,7 @@ def usage():
 def check_argv():
     try:
         assert len(sys.argv) > 1
-        assert sys.argv.count("-main") <= 1
+        assert sys.argv.count("--main") <= 1
     except:
         sys.stderr.write("\nERROR: no input file\n")
         usage()
@@ -46,7 +46,7 @@ def check_argv():
 
     for file_name in sys.argv[1:]:
         try:
-            if file_name != "-main":
+            if file_name != "--main":
                 open(file_name).close()
         except:
             sys.stderr.write("\nERROR: cannot open %s"%file_name)
@@ -60,7 +60,7 @@ def main():
     content = []
 
     for f in sys.argv[1:]:
-        if f == "-main":
+        if f == "--main":
             continue
         handle = open(f)
         attrs = handle.readline().replace("\n","").split("\t")[1:]
@@ -83,8 +83,8 @@ def main():
     content.append("\t".join(line))
 
     main_members = []
-    if "-main" in sys.argv:
-        f = sys.argv[sys.argv.index("-main")+1]
+    if "--main" in sys.argv:
+        f = sys.argv[sys.argv.index("--main")+1]
         handle = open(f)
         handle.readline()
         for line in handle:
