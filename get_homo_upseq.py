@@ -12,29 +12,10 @@ from Bio.SeqRecord import SeqRecord
 import os,sys
 
 #out_path = "/Users/kmeihua1017/Documents/G875data/upseq_95/"
-ygob_path = "YGOB_dataset/"
 out_path = "/Users/bingwang/zen/get_up_out/"
+gene_list_file = "test.list" #need input, every line contains a genename
 
-pillar_file = ygob_path+"/Pillars.tab"
-pillar_column =["Vpolyspora_1","Tphaffii_1","Tblattae_1","Ndairenensis_1",\
-            "Ncastellii_1","Knaganishii_1","Kafricana_1","Cglabrata_1","Suvarum_1",\
-            "Skudriavzevii_1","Smikatae_1","Scerevisiae_1","Ancestor","Zrouxii",\
-            "Tdelbrueckii","Klactis","Egossypii","Ecymbalariae","Lkluyveri",\
-            "Lthermotolerans","Lwaltii","Scerevisiae_2","Smikatae_2",\
-            "Skudriavzevii_2","Suvarum_2","Cglabrata_2","Kafricana_2","Knaganishii_2",\
-            "Ncastellii_2","Ndairenensis_2","Tblattae_2","Tphaffii_2","Vpolyspora_2"]
-
-gene_list = set(["YBR285W","YDL241W","YDR018C","YEL041W","YER121W","YFL052W","YFL054C","YFR017C","YGL117W",\
-    "YGL146C","YGR043C","YGR205W","YHR029C","YHR033W","YHR210C","YIL024C","YIR016W","YJR115W",\
-    "YLR312C","YML131W","YMR103C","YMR206W","YNL144C","YNR071C","YNR073C","YOR343C","YPL113C",\
-    "YPL230W","YPR196W","YDR216W","YDR085C","YMR280C","YFR014C","YOR100C","YPR030W","YHR043C",\
-    "YBL043W","YBR033W","YDR516C","YOR383C","YGR243W","YJL221C","YNR002C","YOR178C","YDR009W",\
-    "YPL248C","YPR184W","YER054C","YEL011W","YKR058W","YFR015C","YHL032C","YIL155C","YPR005C",\
-    "YER062C","YFR053C","YMR011W","YHR092C","YER065C","YPR006C","YMR081C","YKL217W","YCR091W",\
-    "YPL054W","YGR244C","YGR289C","YBR298C","YBR299W","YBR297W","YKL093W","YFR030W","YLL061W",\
-    "YDL079C","YDL079C","YDR277C","YOL104C","YBR001C","YPL134C","YPL171C","YDR406W","YIL107C",\
-    "YAR071W","YBR093C","YBR296C","YLR327C","YBR050C","YDL194W","YER046W","YIL162W","SUC4",\
-    "YGL096W","YKR098C","YER098W","YDR247W","YMR104C"])
+gene_list = set(open(gene_list_file).read().strip().split("\n"))
 
 genome_list = set(["Ncastellii","Scerevisiae","Klactis","Smikatae","Skudriavzevii",\
             "Cglabrata","Knaganishii","Kafricana","Lkluyveri","Tdelbrueckii","Egossypii",\
@@ -307,6 +288,16 @@ def main():
     write_homo_by_list(all_homo, "all", UP_LEN)
 
 if __name__ == "__main__":
+    ygob_path = "YGOB_dataset/"
+    pillar_file = ygob_path+"/Pillars.tab"
+    pillar_column =["Vpolyspora_1","Tphaffii_1","Tblattae_1","Ndairenensis_1",\
+                "Ncastellii_1","Knaganishii_1","Kafricana_1","Cglabrata_1","Suvarum_1",\
+                "Skudriavzevii_1","Smikatae_1","Scerevisiae_1","Ancestor","Zrouxii",\
+                "Tdelbrueckii","Klactis","Egossypii","Ecymbalariae","Lkluyveri",\
+                "Lthermotolerans","Lwaltii","Scerevisiae_2","Smikatae_2",\
+                "Skudriavzevii_2","Suvarum_2","Cglabrata_2","Kafricana_2","Knaganishii_2",\
+                "Ncastellii_2","Ndairenensis_2","Tblattae_2","Tphaffii_2","Vpolyspora_2"]
+
     gene_db = gene_db_init()
     YGOB = load_seq()
     main()
