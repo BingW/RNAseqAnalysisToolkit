@@ -1,19 +1,12 @@
 #! /usr/bin/env python
 # coding:utf-8
-# Author: bingwang
-# Email: toaya.kase@gmail.com
-# Copylight 2012-2012 Bing Wang
-# LICENCES: GPL v3.0
-
-__docformat__ = "epytext en"
 
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 import os,sys
 
-#out_path = "/Users/kmeihua1017/Documents/G875data/upseq_95/"
-out_path = "/Users/bingwang/zen/get_up_out/"
-gene_list_file = "test.list" #need input, every line contains a genename
+out_path = "/Users/bingwang/Downloads"
+gene_list_file = "/Users/bingwang/Downloads/scer_DE_rsem.txt" #need input, every line contains a genename
 
 gene_list = set(open(gene_list_file).read().strip().split("\n"))
 
@@ -72,8 +65,7 @@ def gene_db_init():
     #     record.descrip = description
 
     gene_db = {}
-   
-
+ 
     f = open(pillar_file)
     for line in f:
         names = line.strip().split("\t")
