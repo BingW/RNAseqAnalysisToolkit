@@ -58,8 +58,10 @@ class Gene():
         self._get_seq(n,seq_dict,allow_overlap)
         return self.down_seq
 
-    def gene_seq(self,seq_dict):
-        self._get_seq(n,seq_dict,allow_overlap)
+    def gene_seq(self,seq_dict,allow_overlap=None):
+        if allow_overlap == None:
+            allow_overlap = True 
+        self._get_seq(0,seq_dict,allow_overlap)
         return self.seq
 
 def load_annotation(gff_file,type_field,id_field):
